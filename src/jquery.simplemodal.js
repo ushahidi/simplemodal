@@ -40,11 +40,10 @@
  * dialog can be created at a time. Which means that all of the matched
  * elements will be displayed within the modal container.
  *
- * SimpleModal internally sets the CSS needed to display the modal dialog
- * properly in all browsers, yet provides the developer with the flexibility
- * to easily control the look and feel. The styling for SimpleModal can be
- * done through external stylesheets, or through SimpleModal, using the
- * overlayCss, containerCss, and dataCss options.
+ * SimpleModal does not set any styling on modals, but rather provides the
+ * developer with the flexibility to easily control the look and feel by
+ * creating their own CSS in combination with the overlayCss, containerCss,
+ * and dataCss options.
  *
  * @name SimpleModal
  * @type jQuery
