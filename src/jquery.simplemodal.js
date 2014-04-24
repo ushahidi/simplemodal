@@ -142,6 +142,7 @@
 								with the page below the dialog.
 	 * onOpen:			(Function:null) The callback function used in place of SimpleModal's open
 	 * onShow:			(Function:null) The callback function used after the modal dialog has opened
+	 * onHide:			(Function:null) The callback function used before the modal dialog is closed
 	 * onClose:			(Function:null) The callback function used in place of SimpleModal's close
 	 */
 	$.modal.defaults = {
@@ -166,6 +167,7 @@
 		modal: true,
 		onOpen: null,
 		onShow: null,
+		onHide: null,
 		onClose: null
 	};
 
@@ -176,7 +178,7 @@
 	$.modal.impl = {
 		/*
 		 * Contains the modal dialog elements and is the object passed
-		 * back to the callback (onOpen, onShow, onClose) functions
+		 * back to the callback (onOpen, onShow, onHide, onClose) functions
 		 */
 		d: {},
 		/*
@@ -425,6 +427,10 @@
 				s.o.onClose.apply(s, [s.d]);
 			}
 			else {
+				// useful for removing events/manipulating data in the modal dialog before closing
+				if ($.isFunction(s.o.onHide)) {
+					s.o.onHide.apply(s, [s.d]);
+				}
 				// if the data came from the DOM, put it back
 				if (s.d.placeholder) {
 					var ph = $('#simplemodal-placeholder');
