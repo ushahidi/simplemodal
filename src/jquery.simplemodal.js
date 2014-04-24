@@ -97,6 +97,13 @@
 	};
 
 	/*
+	 * Update the modal dialog. Re-bind events. Focus, if "focus" option is enabled.
+	 */
+	$.modal.update = function () {
+		$.modal.impl.update();
+	};
+
+	/*
 	 * Chained function to create a modal dialog.
 	 *
 	 * @param {object} [options] An optional object containing options overrides
